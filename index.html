@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pós Graduação | Pós na Faveni online</title>
+  <meta name="description" content="Pós Graduação online. Polo Faveni de Catanduva-SP. Cursos de Agricultura e Veterinária, Ciências Sociais, Negócios e Direito, Ciências, Matemática e Computação, Educação, Engenharia, Produção e Construção, Humanidade e Artes, Saúde e Bem Estar Social e Serviços.">
+  <link rel="icon" href="https://static.wixstatic.com/media/409d4e_def8853578634ffbaaacb9aa6692375c%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/409d4e_def8853578634ffbaaacb9aa6692375c%7Emv2.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://static.wixstatic.com">
+  <link rel="preconnect" href="https://static.parastorage.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #0c4426;
+      --green: #10834c;
+      --green-bright: #0c6a3d;
+      --green-deep: #07351f;
+      --gold: #ffb505;
+      --gold-soft: #e6cf5d;
+      --paper: #f2f5ef;
+      --white: #fffefa;
+      --ink: #18251d;
+      --muted: #435449;
+      --line: rgba(12, 68, 38, 0.18);
+      --line-light: rgba(255, 254, 250, 0.28);
+      --on-dark: #fffefa;
+      --header: 5rem;
+      --dock: 4.25rem;
+      --shadow: 0 18px 40px rgba(7, 53, 31, 0.22);
+      --display: "Manrope", "Open Sans", Arial, sans-serif;
+      --body: "Open Sans", Arial, sans-serif;
+      --gold-hover: #ffd166;
+      --on-dark-soft: #e6eee6;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--forest);
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+    ::selection { background: var(--gold); color: var(--forest); }
+    input, textarea { caret-color: var(--gold); }
+    ::-webkit-scrollbar { width: 12px; height: 12px; }
+    ::-webkit-scrollbar-track { background: var(--forest); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border: 3px solid var(--forest); }
+
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      background: var(--gold);
+      color: var(--forest);
+      padding: 0.6rem 1rem;
+      z-index: 20;
+      font-weight: 700;
+    }
+    .skip:focus { top: 1rem; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--white);
+      color: var(--forest);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 5px 18px rgba(7, 53, 31, 0.06);
+    }
+    .header-inner {
+      min-height: var(--header);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      text-decoration: none;
+      line-height: 1.05;
+    }
+    .brand strong {
+      font-family: var(--display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 0.95;
+    }
+    .brand span {
+      display: block;
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--gold);
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+    }
+    .nav-toggle {
+      display: none;
+      min-height: 44px;
+      min-width: 44px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--forest);
+      font: 700 0.95rem/1 var(--body);
+      padding: 0 0.8rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem 1.15rem;
+    }
+    .nav a, .portal-btn, .contact-cta {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .nav a { padding: 0.4rem 0; }
+    .nav > a:not(.contact-cta), .portal-btn {
+      color: var(--forest);
+      transition: color 180ms ease;
+    }
+    .nav > a:not(.contact-cta):hover, .portal-btn:hover { color: var(--green-bright); }
+    .nav > a:not(.contact-cta)::after {
+      display: block;
+      content: "";
+      height: 2px;
+      margin-top: 0.15rem;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+    .nav > a:not(.contact-cta):hover::after, .nav > a:not(.contact-cta):focus-visible::after { transform: scaleX(1); }
+    .contact-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0.7rem 1.15rem;
+      color: var(--forest);
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      box-shadow: 0 7px 16px rgba(12, 68, 38, 0.12);
+      transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+    .contact-cta:hover, .contact-cta:focus-visible {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(12, 68, 38, 0.16);
+    }
+    .portal { position: relative; }
+    .portal-btn {
+      min-height: 44px;
+      border: 0;
+      background: transparent;
+      color: var(--forest);
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--body);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .portal-btn::after {
+      content: "";
+      display: inline-block;
+      width: 0.42rem;
+      height: 0.42rem;
+      margin: 0 0 0.16rem 0.45rem;
+      border-right: 1.5px solid var(--green-bright);
+      border-bottom: 1.5px solid var(--green-bright);
+      transform: rotate(45deg);
+    }
+    .portal-panel {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 0.6rem);
+      width: min(22rem, 80vw);
+      background: var(--white);
+      color: var(--forest);
+      box-shadow: var(--shadow);
+      padding: 0.4rem;
+    }
+    .portal-panel a {
+      display: block;
+      padding: 0.75rem 0.85rem;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .portal-panel a span {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .portal-panel a:hover,
+    .portal-panel a:focus-visible { background: var(--paper); }
+    .portal.is-open .portal-panel { display: block; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--forest);
+      color: var(--on-dark);
+      isolation: isolate;
+    }
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      width: min(36vw, 32rem);
+      aspect-ratio: 1;
+      right: -9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255, 181, 5, 0.28);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3.4rem rgba(255, 181, 5, 0.035), 0 0 0 7rem rgba(255, 181, 5, 0.025);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(19rem, 0.9fr) 1.1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      padding: clamp(3.25rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+      min-height: min(690px, calc(100svh - var(--header)));
+    }
+    h1, h2, h3 { font-family: var(--display); letter-spacing: -0.04em; line-height: 1.02; font-weight: 700; }
+    h1 { font-size: clamp(3.25rem, 7.2vw, 6.2rem); margin: 0 0 1.2rem; max-width: 8ch; }
+    .hero-title-brand {
+      display: block;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.015em;
+    }
+    .hero-copy > * {
+      animation: hero-arrive 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .hero-copy > :nth-child(2) { animation-delay: 90ms; }
+    .hero-copy > :nth-child(3) { animation-delay: 160ms; }
+    @keyframes hero-arrive {
+      from { opacity: 0; translate: 0 14px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    .lede {
+      margin: 0 0 1.4rem;
+      max-width: 34ch;
+      color: var(--on-dark-soft);
+      font-size: 1.2rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0.75rem 1.25rem;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+    .btn-solid { background: var(--gold); color: var(--forest); }
+    .btn-solid:hover, .btn-solid:focus-visible { background: var(--gold-hover); transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid var(--line-light); color: var(--on-dark); }
+    .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--gold); color: var(--gold); }
+    .btn-ghost-light { border: 1px solid var(--line); color: var(--forest); }
+    .btn-ghost-light:hover, .btn-ghost-light:focus-visible { border-color: var(--green-bright); color: var(--green-bright); }
+
+    .doors {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      position: relative;
+    }
+    .door {
+      min-height: 7.5rem;
+      animation: door-arrive 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .door:nth-child(1) { animation-delay: 90ms; }
+    .door:nth-child(2) { animation-delay: 150ms; }
+    .door:nth-child(3) { animation-delay: 210ms; }
+    .door:nth-child(4) { animation-delay: 270ms; }
+    @keyframes door-arrive {
+      from { opacity: 0; translate: 0 12px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    .door {
+      padding: 1.1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--on-dark);
+      border: 1px solid rgba(255, 254, 250, 0.3);
+      background: rgba(255, 254, 250, 0.035);
+      transition: background 220ms cubic-bezier(0.16, 1, 0.3, 1), color 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms, transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .door strong {
+      font-family: var(--display);
+      font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .door em {
+      font-style: normal;
+      color: var(--on-dark-soft);
+      font-size: 0.88rem;
+      text-align: left;
+    }
+    .door em::after { content: "  ↗"; color: var(--gold); }
+    .door:hover, .door:focus-visible {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--forest);
+      transform: translateY(-3px);
+    }
+    .door:hover em, .door:focus-visible em { color: var(--forest); }
+    .door:hover em::after, .door:focus-visible em::after { color: var(--forest); }
+
+    .portal-strip {
+      background: var(--green-deep);
+      color: var(--on-dark);
+      border-top: 1px solid var(--line-light);
+      border-bottom: 4px solid var(--gold);
+    }
+    .portal-strip .wrap {
+      display: grid;
+      grid-template-columns: 12rem 1fr;
+      gap: 1rem;
+      align-items: stretch;
+      padding: 0.55rem 0;
+    }
+    .portal-strip h2 {
+      margin: 0;
+      align-self: center;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .portal-links { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .portal-links a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 4.6rem;
+      padding: 0.7rem 0.9rem;
+      text-decoration: none;
+      border-left: 1px solid var(--line-light);
+      transition: background 180ms ease, color 180ms ease;
+    }
+    .portal-links a strong { font-size: 0.98rem; }
+    .portal-links a span { color: var(--on-dark-soft); font-size: 0.85rem; }
+    .portal-links a:hover, .portal-links a:focus-visible { background: var(--gold); color: var(--forest); }
+    .portal-links a:hover span, .portal-links a:focus-visible span { color: var(--forest); }
+
+    section { padding: clamp(4rem, 7vw, 6.25rem) 0; }
+    .section-head { margin-bottom: 2rem; }
+    h2 { font-size: clamp(2.1rem, 4.5vw, 3.7rem); margin: 0 0 1rem; }
+    .section-head .prose { margin: 0; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 3rem;
+    }
+    .quote {
+      margin: 1.3rem 0 0;
+      max-width: 31ch;
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+      font-weight: 500;
+    }
+    .prose { max-width: 70ch; }
+    .prose p { margin: 0 0 1rem; }
+    .finalidades { margin: 0; padding: 0; list-style: none; }
+    .finalidades li {
+      padding: 0.95rem 0;
+      border-top: 1px solid var(--line);
+      font-weight: 600;
+    }
+    .finalidades li:last-child { border-bottom: 1px solid var(--line); }
+
+    .mec {
+      background: var(--white);
+    }
+    .areas {
+      margin: 1.6rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+    }
+    .areas a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      min-height: 4rem;
+      padding: 0.7rem 0.1rem;
+      text-decoration: none;
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      font-size: 1.12rem;
+      border-bottom: 1px solid var(--line);
+      transition: color 180ms ease, padding 180ms ease;
+    }
+    .areas a::after { content: ""; width: 0.55rem; height: 0.55rem; flex: 0 0 auto; border-top: 1.5px solid var(--green-bright); border-right: 1.5px solid var(--green-bright); transform: rotate(45deg); }
+    .areas li:nth-child(odd) a { padding-right: 0.2rem; }
+    .areas a:hover, .areas a:focus-visible { color: var(--green-bright); padding-left: 0.35rem; }
+
+    .cert {
+      background: var(--forest);
+      color: var(--on-dark);
+    }
+    .cert .prose { color: var(--on-dark-soft); }
+    .rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+    .rule {
+      padding: 1.5rem 1.4rem 1.6rem;
+      background: var(--green-deep);
+      border: 1px solid rgba(255, 254, 250, 0.12);
+    }
+    .rule:first-child { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+    .rule h3 { margin: 0 0 0.7rem; font-size: 1.7rem; }
+    .rule p { margin: 0; }
+    .rule strong { font-size: 1.35rem; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: end;
+    }
+    .contact-phone {
+      display: inline-block;
+      margin: 0.4rem 0 1rem;
+      font-family: var(--body);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: -0.045em;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--green-bright);
+    }
+    address { font-style: normal; color: var(--muted); }
+    address a { display: inline-block; margin-top: 0.8rem; font-weight: 700; text-underline-offset: 0.2em; }
+
+    .site-footer {
+      background: var(--forest);
+      color: var(--on-dark-soft);
+      padding: 1.4rem 0 1.6rem;
+    }
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .site-footer a { color: var(--on-dark); font-weight: 700; }
+    .fine { margin: 0; font-size: 0.98rem; }
+
+    .dock {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 12;
+      padding-bottom: env(safe-area-inset-bottom);
+      background: var(--forest);
+      border-top: 3px solid var(--gold);
+    }
+    .dock a, .dock button {
+      flex: 1;
+      min-height: var(--dock);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--on-dark);
+      background: transparent;
+      border: 0;
+      border-left: 1px solid var(--line-light);
+      text-decoration: none;
+      font: 700 1rem/1 var(--body);
+      cursor: pointer;
+    }
+    .dock a:first-child { border-left: 0; background: var(--gold); color: var(--forest); }
+
+    @media (max-width: 920px) {
+      .nav-toggle { display: inline-flex; align-items: center; }
+      .nav {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--white);
+        color: var(--forest);
+        padding: 0.45rem 1rem 1rem;
+        border-bottom: 3px solid var(--gold);
+        box-shadow: 0 16px 26px rgba(7, 53, 31, 0.14);
+      }
+      .nav.is-open { display: flex; }
+      .nav > a, .nav a, .portal-btn { min-height: 48px; }
+      .nav .contact-cta { min-height: 48px; }
+      .nav > a:not(.contact-cta)::after { display: none; }
+      .nav > a:not(.contact-cta) { display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+      .portal-btn { text-align: left; }
+      .portal-btn::after { position: absolute; right: 0.2rem; top: 1.35rem; }
+      .contact-cta { margin-top: 0.45rem; }
+      .portal-panel { position: static; width: 100%; box-shadow: none; margin-bottom: 0.4rem; border: 1px solid var(--line); }
+      .hero-grid, .portal-strip .wrap, .split, .rules, .contact, .areas, .portal-links {
+        grid-template-columns: 1fr;
+      }
+      .hero::after { width: 30rem; right: -18rem; top: 29%; }
+      .hero-grid { min-height: 0; padding-top: 3rem; padding-bottom: 3rem; align-items: start; gap: 2.4rem; }
+      h1 { max-width: 9ch; }
+      .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .door { min-height: 6.8rem; }
+      .portal-strip .wrap { gap: 0.2rem; padding: 0.9rem 0; }
+      .portal-links a { border-left: 0; border-top: 1px solid var(--line-light); }
+      .areas li:nth-child(odd) a { padding-right: 0; }
+      .dock { display: flex; }
+      body { padding-bottom: calc(var(--dock) + env(safe-area-inset-bottom)); }
+      .site-footer { padding-bottom: 1.2rem; }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 1.5rem, 1120px); }
+      .header-inner { min-height: 4.35rem; }
+      .brand { gap: 0.65rem; }
+      .brand strong { font-size: 1.25rem; letter-spacing: 0.055em; }
+      .brand span { max-width: 8.5rem; padding-left: 0.65rem; font-size: 0.72rem; line-height: 1.25; }
+      .nav-toggle { min-width: 4.25rem; }
+      h1 { font-size: clamp(3rem, 14vw, 4.5rem); }
+      .hero-grid { padding-top: 2.5rem; padding-bottom: 2.6rem; gap: 1.8rem; }
+      .lede { font-size: 1.08rem; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; gap: 0.55rem; }
+      .hero-actions .btn { width: 100%; }
+      .doors { gap: 0.55rem; }
+      .door { min-height: 6.1rem; padding: 0.8rem; }
+      .door strong { font-size: 1.12rem; }
+      .door em { font-size: 0.78rem; }
+      .rules { gap: 0.75rem; }
+      .contact-phone { font-size: clamp(2.1rem, 11vw, 3rem); }
+      .dock a, .dock button { min-height: 3.8rem; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 360px) {
+      .wrap { width: calc(100% - 1.25rem); }
+      .brand { gap: 0.5rem; }
+      .brand strong { font-size: 1.13rem; }
+      .brand span { font-size: 0.66rem; padding-left: 0.5rem; }
+      .nav-toggle { min-width: 3.8rem; padding-inline: 0.55rem; }
+      .doors { grid-template-columns: 1fr; }
+      .door { min-height: 5rem; flex-direction: row; align-items: center; }
+      .door em { text-align: right; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-copy > *, .door { animation: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#topo" id="topo" aria-label="Pós na Faveni, Polo Roberlan Catanduva — início">
+        <strong>FAVENI</strong>
+        <span>Polo Roberlan · Catanduva</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="nav" id="menu" aria-label="Principal">
+        <a href="#topo">Tela inicial</a>
+        <a href="#cursos">Cursos</a>
+        <div class="portal" id="portal">
+          <button class="portal-btn" type="button" aria-expanded="false" aria-controls="portal-panel">Portal do aluno</button>
+          <div class="portal-panel" id="portal-panel">
+            <a href="https://ava.faveni.edu.br/" target="_blank" rel="noopener noreferrer">Faveni AVA<span>ava.faveni.edu.br</span></a>
+            <a href="https://universa.faveni.edu.br/financeiro/painel/titulos" target="_blank" rel="noopener noreferrer">Boleto Faveni<span>Financeiro Universa</span></a>
+            <a href="https://ava.unifaveni.com.br/wp-login.php" target="_blank" rel="noopener noreferrer">Unifaveni AVA<span>ava.unifaveni.com.br</span></a>
+            <a href="https://universa.unifaveni.com.br/financeiro/painel/titulos" target="_blank" rel="noopener noreferrer">Boleto Unifaveni<span>Financeiro Universa</span></a>
+          </div>
+        </div>
+        <a href="https://share.google/lK21t9Ilynl73VHXi" target="_blank" rel="noopener noreferrer">Faveni no Google</a>
+        <a class="contact-cta" href="https://www.posnafaveni.com.br/contact-6">Entre em contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 id="titulo">Pós na <span class="hero-title-brand">FAVENI</span></h1>
+          <p class="lede">Polo de Catanduva. Pós-graduação, segunda graduação, graduação e capacitação, com reconhecimento MEC citado pela própria instituição.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="https://www.posnafaveni.com.br/contact-6">Entre em contato</a>
+            <a class="btn btn-ghost" href="https://www.posnafaveni.com.br/cursos">Ver cursos</a>
+          </div>
+        </div>
+        <nav class="doors" aria-label="Tipos de curso">
+          <a class="door" href="https://www.posnafaveni.com.br/cursos"><strong>Pós-Graduação</strong><em>Ver no catálogo</em></a>
+          <a class="door" href="https://www.posnafaveni.com.br/cursos"><strong>Segunda Graduação</strong><em>Ver no catálogo</em></a>
+          <a class="door" href="https://www.posnafaveni.com.br/cursos"><strong>Graduação</strong><em>Ver no catálogo</em></a>
+          <a class="door" href="https://www.posnafaveni.com.br/cursos"><strong>Capacitação</strong><em>Ver no catálogo</em></a>
+        </nav>
+      </div>
+    </section>
+
+    <div class="portal-strip" id="portal-aluno">
+      <div class="wrap">
+        <h2>Portal do aluno</h2>
+        <nav class="portal-links" aria-label="Acesso do aluno">
+          <a href="https://ava.faveni.edu.br/" target="_blank" rel="noopener noreferrer"><strong>Faveni AVA</strong><span>Entrar na sala</span></a>
+          <a href="https://universa.faveni.edu.br/financeiro/painel/titulos" target="_blank" rel="noopener noreferrer"><strong>Boleto Faveni</strong><span>Títulos e pagamento</span></a>
+          <a href="https://ava.unifaveni.com.br/wp-login.php" target="_blank" rel="noopener noreferrer"><strong>Unifaveni AVA</strong><span>Entrar na sala</span></a>
+          <a href="https://universa.unifaveni.com.br/financeiro/painel/titulos" target="_blank" rel="noopener noreferrer"><strong>Boleto Unifaveni</strong><span>Títulos e pagamento</span></a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="mec" id="instituicao">
+      <div class="wrap split">
+        <div>
+          <h2>Reconhecida pelo MEC</h2>
+          <blockquote class="quote">Uma instituição de ensino de excelência em educação, disseminadora de conhecimentos científico, tecnológico, social, econômico e político, em prol do bem-estar da sociedade e da valorização do ser humano em suas dimensões.</blockquote>
+        </div>
+        <div class="prose">
+          <p>No que se refere à excelência em educação, a UniFAVENI desenvolve as suas atividades direcionadas à formação de profissionais dotados de competências e habilidades necessárias à inserção e permanência no mercado de trabalho, contribuindo para a evolução da humanidade. Destaca-se a qualidade de ensino comprovada pelos resultados do ENADE e pelas avaliações dos cursos pelo MEC. Oferta cursos de capacitação, graduação presencial, graduação EAD e pós-graduação EAD.</p>
+          <p>A frase acima é a apresentação publicada pelo polo. Notas, conceitos e a lista de cursos autorizados estão no catálogo e nos registros do MEC, não nesta página.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cursos">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Nossos cursos</h2>
+          <p class="prose">Áreas publicadas pelo Polo Faveni Catanduva. Cada uma abre o catálogo oficial, onde a matrícula acontece.</p>
+        </div>
+        <ul class="areas">
+          <li><a href="https://www.posnafaveni.com.br/cursos">Agricultura e Veterinária</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Ciências Sociais, Negócios e Direito</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Ciências, Matemática e Computação</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Educação</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Engenharia, Produção e Construção</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Humanidade e Artes</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Saúde e Bem Estar Social</a></li>
+          <li><a href="https://www.posnafaveni.com.br/cursos">Serviços</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div class="prose">
+          <h2>Tradição e excelência</h2>
+          <p>A UniFAVENI foi idealizada para se consolidar como um modelo de ensino de qualidade em consonância com a sua missão, conceituada nacionalmente por sua excelência. Neste contexto, a faculdade busca promover o desenvolvimento de profissionais e cidadãos corresponsáveis pela transformação da sociedade, proporcionando educação comprometida com a ética, a cidadania e o conhecimento. Este ideal está consubstanciado em seu propósito de funcionar adaptada às necessidades e peculiaridades do meio, com conteúdo curricular e método pedagógico sob permanente avaliação.</p>
+          <p>Nesta perspectiva, a faculdade almeja ter uma contribuição diferencial na formação de recursos humanos qualificados na área de administração, destacando-se na descoberta de uma renovada visão de mundo e de ativo espírito crítico, reflexivo sobre o homem e a realidade regional.</p>
+        </div>
+        <div>
+          <h2>Finalidades</h2>
+          <p>A UniFAVENI desenvolve esforços objetivando o processo de permanente atualização administrativa com uma gestão participativa, buscando a otimização de seus processos e a consolidação de sua atuação junto à sociedade, e tem por finalidades:</p>
+          <ul class="finalidades">
+            <li>Formação e capacitação de profissionais de nível superior com visão cidadã.</li>
+            <li>Incentivo ao trabalho de pesquisa, em favor do desenvolvimento da ciência, da tecnologia, da criação e difusão de conhecimentos culturais, científicos e técnicos, integrando o homem no seu contexto histórico e no meio em que vive.</li>
+            <li>Formação do cidadão permitindo uma postura crítica.</li>
+          </ul>
+          <p>A busca dessas finalidades ocorre através da utilização de metodologias adequadas de caráter interdisciplinar, de acordo com os planos, programas e projetos elaborados e executados pelos setores acadêmicos da instituição e em consonância com a sociedade.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cert" id="certificado">
+      <div class="wrap">
+        <h2>Certificado</h2>
+        <p class="prose">O certificado só é enviado se não houver pendência acadêmica, financeira ou administrativa. O caminho muda conforme o sistema da matrícula.</p>
+        <div class="rules">
+          <article class="rule">
+            <h3>Universa</h3>
+            <p>Após a aprovação, o aluno do sistema Universa não precisa solicitar o certificado de conclusão. O prazo é de <strong>15 dias úteis</strong> para confecção e envio pelos Correios.</p>
+          </article>
+          <article class="rule">
+            <h3>VBMA</h3>
+            <p>O aluno matriculado no sistema VBMA acessa o portal, abre um protocolo de atendimento e direciona ao setor de certificado. O prazo é de <strong>30 dias</strong> para confecção e envio pelos Correios.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="wrap contact">
+        <div>
+          <h2>Fale com o polo</h2>
+          <a class="contact-phone" href="tel:+551735256707">(17) 3525-6707</a>
+          <p class="prose">O formulário de contato e o catálogo de cursos estão disponíveis nas páginas oficiais do polo.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="https://www.posnafaveni.com.br/contact-6">Entre em contato</a>
+            <a class="btn btn-ghost-light" href="https://www.posnafaveni.com.br/cursos">Ver cursos</a>
+          </div>
+        </div>
+        <address>
+          Polo Faveni Catanduva<br>
+          Polo Roberlan<br>
+          Catanduva · SP<br>
+          <a href="https://share.google/lK21t9Ilynl73VHXi">Faveni no Google</a>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="fine">© 2021 por Polo Faveni Catanduva.</p>
+      <a href="https://www.posnafaveni.com.br">Site oficial</a>
+    </div>
+  </footer>
+
+  <div class="dock" aria-label="Ações rápidas">
+    <a href="tel:+551735256707">Ligar</a>
+    <a href="https://www.posnafaveni.com.br/cursos">Cursos</a>
+    <button type="button" id="dock-portal">Portal</button>
+  </div>
+
+  <script>
+    const toggle = document.querySelector(".nav-toggle");
+    const menu = document.querySelector("#menu");
+    const portal = document.querySelector("#portal");
+    const portalBtn = document.querySelector(".portal-btn");
+
+    toggle.addEventListener("click", () => {
+      const open = menu.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      if (!open) setPortal(false);
+    });
+
+    function setPortal(open) {
+      portal.classList.toggle("is-open", open);
+      portalBtn.setAttribute("aria-expanded", String(open));
+    }
+
+    portalBtn.addEventListener("click", () => {
+      setPortal(!portal.classList.contains("is-open"));
+    });
+
+    document.querySelector("#dock-portal").addEventListener("click", () => {
+      menu.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+      setPortal(true);
+      portalBtn.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setPortal(false);
+    });
+  </script>
+</body>
+</html>
